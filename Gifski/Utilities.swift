@@ -6,6 +6,10 @@ import StoreKit.SKStoreReviewController
 import Accelerate.vImage
 import Defaults
 
+typealias Defaults = _Defaults
+typealias Default = _Default
+typealias AnyCancellable = Combine.AnyCancellable
+
 
 /**
 Convenience function for initializing an object and modifying its properties
@@ -3920,7 +3924,6 @@ extension NSAttributedString {
 	}
 
 	static func += (lhs: inout NSAttributedString, rhs: NSAttributedString) {
-		// swiftlint:disable:next shorthand_operator
 		lhs = lhs + rhs
 	}
 
@@ -4446,7 +4449,6 @@ extension CMTime {
 	}
 
 	static func *= (lhs: inout Self, rhs: Double) {
-		// swiftlint:disable:next shorthand_operator
 		lhs = lhs * rhs
 	}
 
@@ -4455,7 +4457,6 @@ extension CMTime {
 	}
 
 	static func /= (lhs: inout Self, rhs: Double) {
-		// swiftlint:disable:next shorthand_operator
 		lhs = lhs / rhs
 	}
 }
