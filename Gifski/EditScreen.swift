@@ -46,6 +46,7 @@ struct EditScreen: View {
 			controls
 			bottomBar
 		}
+		.background(.ultraThickMaterial)
 		.navigationTitle(url.lastPathComponent)
 		.navigationDocument(url)
 		.onReceive(Defaults.publisher(.outputSpeed, options: []).removeDuplicates().debounce(for: .seconds(0.4), scheduler: DispatchQueue.main)) { change in
@@ -113,19 +114,22 @@ struct EditScreen: View {
 					resizableDimensions: $resizableDimensions
 				)
 				SpeedSetting()
-					.padding(.bottom, 7) // Makes the forms have equal height.
+					.padding(.bottom, 6) // Makes the forms have equal height.
 			}
+			.padding(.horizontal, -8) // Form comes with some default padding, which we don't want.
 			.fillFrame()
 			.containerRelativeFrame(.horizontal, count: 2, span: 1, spacing: 0)
-			.padding(.trailing, -14)
+			.padding(.trailing, -8)
 			Form {
 				FrameRateSetting(videoFrameRate: metadata.frameRate)
 				QualitySetting()
 				LoopSetting(loopCount: $loopCount)
 			}
+			.padding(.horizontal, -8)
 			.fillFrame()
 			.containerRelativeFrame(.horizontal, count: 2, span: 1, spacing: 0)
 		}
+		.padding(-12)
 		.formStyle(.grouped)
 		.scrollContentBackground(.hidden)
 		.scrollDisabled(true)
@@ -146,7 +150,7 @@ struct EditScreen: View {
 			EstimatedFileSizeView(model: estimatedFileSizeModel)
 		}
 		.padding()
-		.background(.fill.quaternary)
+		.padding(.top, -16)
 	}
 
 	private var conversionSettings: GIFGenerator.Conversion {
